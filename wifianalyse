@@ -24,7 +24,7 @@ read -e pingaddress
 count=0
 
 echo "        Time           Count                    Output                                                  Ping"
-echo "        Time           Count                    Output                                                  Ping" >> wifianalyse.log
+echo "        Time           Count                    Output                                                  Ping" >> ~/wifianalyse.log
 while [ 1 -eq 1 ]
 do
 	sleep 1
@@ -34,5 +34,5 @@ do
 	pingoutput=$(ping -c 1 $pingaddress | grep -E -o -m 1 'time.{0,10}' & )
 	curtime=$(date +%d/%m/%y\ %H:%M:%S)
 	echo [$curtime] "| " "$countf""  |  " $wifioutput " |   " $pingoutput
-	echo [$curtime] "| " "$countf""  |  " $wifioutput " |   " $pingoutput >> wifianalyse.log
+	echo [$curtime] "| " "$countf""  |  " $wifioutput " |   " $pingoutput >> ~/wifianalyse.log
 done
