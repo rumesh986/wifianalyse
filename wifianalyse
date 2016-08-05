@@ -1,0 +1,38 @@
+#!/bin/bash
+# Copyright 2016 Rumesh Sudhaharan
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+
+echo "Please enter the wireless interface you wish to use"
+read -e wifiinterface
+echo "Please enter the routers ip address(or any system you wish to ping)"
+read -e pingaddress
+
+count=0
+
+echo "        Time           Count                    Output                                                  Ping"
+echo "        Time           Count                    Output                                                  Ping" >> wifianalyse.log
+while [ 1 -eq 1 ]
+do
+	sleep 1
+	count=$((count + 1))
+	countf=$(printf "%05s" $count)
+	wifioutput=$(iwconfig $wifiinterface | grep -i --color quality)
+	pingoutput=$(ping -c 1 $pingaddress | grep -E -o -m 1 'time.{0,10}' & )
+	curtime=$(date +%d/%m/%y\ %H:%M:%S)
+	echo [$curtime] "| " "$countf""  |  " $wifioutput " |   " $pingoutput
+	echo [$curtime] "| " "$countf""  |  " $wifioutput " |   " $pingoutput >> wifianalyse.log
+done
