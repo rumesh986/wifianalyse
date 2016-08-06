@@ -8,3 +8,4 @@ Using the script is very simple. just open a terminal `cd` to the directoryu con
 
 ### Tips
 Move the `wifianalyse` script to `/usr/local/bin/` to be able to run the script from anywhere.
+If the file is not executable, run `chmod +x wifianalyse`to make it an executable.
