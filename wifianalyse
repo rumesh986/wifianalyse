@@ -22,9 +22,9 @@ echo "Please enter the routers ip address(or any system you wish to ping)"
 read -e pingaddress
 
 count=0
-
-echo "        Time           Count                    Output                                                  Ping"
-echo "        Time           Count                    Output                                                  Ping" >> ~/wifianalyse.log
+echo "Interface: $wifiinterface    Ping Address: $pingaddress" >> ~/wifianalyse.log
+echo "        Time           Count                    Output                              Ping"
+echo "        Time           Count                    Output                              Ping" >> ~/wifianalyse.log
 while [ 1 -eq 1 ]
 do
 	sleep 1
